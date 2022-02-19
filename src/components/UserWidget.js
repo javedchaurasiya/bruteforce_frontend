@@ -1,7 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { selectUser } from "../features/userSlice";
+import { useSelector } from "react-redux";
+import { logout } from "../features/userSlice";
+import { useDispatch } from "react-redux";
 
 function UserWidget() {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  const signOut = () => {
+    console.log("logout clicked");
+    localStorage.removeItem("Token");
+    console.log(user);
+    dispatch(logout());
+    console.log(user);
+  };
   const defAvatarImage =
     "https://media-exp1.licdn.com/dms/image/C5603AQG1B8pmz0jpvg/profile-displayphoto-shrink_400_400/0/1637489130518?e=1650499200&v=beta&t=ZIbuzQ7DX7cqJ8cXs8OzTm1NGKLpL6qinBtZiiZk9SM";
 
@@ -33,7 +47,7 @@ function UserWidget() {
           >
             <li>
               <Link className="dropdown-item" to="/">
-                UserName
+                {user.general_name}
               </Link>
             </li>
             <li>
@@ -58,11 +72,13 @@ function UserWidget() {
             </li>
           </ul>
         </div>
-        <Link id="logout-btn" to="/">
-          <button type="button" class="btn btn-outline-danger btn-sm mx-2">
-            Logout
-          </button>
-        </Link>
+        <button
+          type="button"
+          className="btn btn-outline-danger btn-sm mx-2"
+          onClick={signOut}
+        >
+          Logout
+        </button>
       </div>
     </>
   );

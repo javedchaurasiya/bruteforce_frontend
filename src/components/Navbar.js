@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
 import { Link } from "react-router-dom";
 import UserWidget from "./UserWidget";
-import {useEffect} from 'react'
+import { useEffect } from "react";
 
 function Navbar() {
   const user = useSelector(selectUser);
@@ -14,7 +14,7 @@ function Navbar() {
 
   return (
     <>
-       <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             bruteForce
@@ -47,27 +47,32 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link active" to="/code-editor">
+                  Online IDE
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link active" to="/searchuser">
                   Search User
                 </Link>
               </li>
             </ul>
             <div className="d-flex">
-              {user ? (
+              {!user ? (
                 <>
-                  <div class="d-flex flex-row">
-                    <Link to="/Login">
+                  <div className="d-flex flex-row">
+                    <Link to="/login">
                       <button
                         type="button"
-                        class="btn btn-outline-primary btn-sm"
+                        className="btn btn-outline-primary btn-sm"
                       >
                         Login In
                       </button>
                     </Link>
-                    <Link to="/">
+                    <Link to="/signup">
                       <button
                         type="button"
-                        class="btn btn-outline-success btn-sm mx-2"
+                        className="btn btn-outline-success btn-sm mx-2"
                       >
                         Sign Up
                       </button>
