@@ -1,0 +1,40 @@
+.code-editor-body
+{
+    margin-top: 55px;
+    background: #f0fff0;
+}
+.items
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.editor
+{
+   margin-top: 30px;
+}
+.dropdown-items
+{
+    width: 720px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+}
+.language-selector
+{
+    width: auto;
+    /* width: auto; */
+}
+.theme-selector
+{
+    margin-left: 30px;
+    width: auto;
+}
+.font-selector
+{
+    margin-left: 30px;
+    width: 100px;
+}
