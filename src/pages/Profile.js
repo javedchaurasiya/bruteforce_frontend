@@ -20,6 +20,7 @@ import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import SubmissionPageComponent from '../components/SubmissionPageComponent'
 import "./profile.css";
 
 function Profile() {
@@ -197,19 +198,20 @@ function Profile() {
             <div className="cal-heatmap">Space for Calendar HeatMap</div>
             <div className="solution-posts-container">
               <TabContext value={tabIndex}>
-                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                <Box sx={{ borderBottom: 1, borderColor: "divider",padding:0 }}>
                   <TabList
                     onChange={handleChange}
                     textColor="secondary"
                     indicatorColor="secondary"
                     aria-label="lab API tabs example"
+                    variant="fullWidth"
                   >
                     <Tab
                       label={
                         <span
-                          style={{ color: tabIndex === "1" ? "green" : "" }}
+                          style={{ color: tabIndex === "1" ? "green" : "" ,fontSize:'12px'}}
                         >
-                          <CheckCircleIcon />
+                          <CheckCircleIcon sx={{fontSize:'16px'}} />
                           <span
                             style={{ marginLeft: "5px", paddingTop: "3px" }}
                           >
@@ -222,9 +224,9 @@ function Profile() {
                     <Tab
                       label={
                         <span
-                          style={{ color: tabIndex === "2" ? "#fe5f75" : "" }}
+                          style={{ color: tabIndex === "2" ? "#fe5f75" : "",fontSize:'12px' }}
                         >
-                          <DynamicFeedIcon />
+                          <DynamicFeedIcon sx={{fontSize:'16px'}} />
                           <span
                             style={{ marginLeft: "5px", paddingTop: "3px" }}
                           >
@@ -234,11 +236,22 @@ function Profile() {
                       }
                       value="2"
                     />
-                    <Tab label="Something" value="3" />
+                    <Tab label={
+                        <span
+                          style={{ color: tabIndex === "3" ? "blue" : "",fontSize:'12px' }}
+                        >
+                          <DynamicFeedIcon sx={{fontSize:'16px'}}  />
+                          <span
+                            style={{ marginLeft: "5px", paddingTop: "3px" }}
+                          >
+                            Something
+                          </span>
+                        </span>
+                      } value="3" />
                   </TabList>
                 </Box>
                 <TabPanel value="1" sx={{ padding: 0 }}>
-                  Submission Component
+                  <SubmissionPageComponent/>
                 </TabPanel>
                 <TabPanel value="2" sx={{ padding: 0 }}>
                   Posts Component

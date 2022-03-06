@@ -1,0 +1,12 @@
+.main-sub-skeleton
+{
+    width: 98%;
+    margin: 0 auto;
+    background: #f7f7f8;
+    padding: 10px;
+    padding-left: 15px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 500;
+}
+

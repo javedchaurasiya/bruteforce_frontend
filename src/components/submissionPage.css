@@ -1,0 +1,25 @@
+.main-submission-page
+{
+    width:100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.main-sub-skeleton:nth-child(even)
+{
+    background: #ffffff;
+}
+.view-more-submissions-btn
+{
+    width: 98%;
+    margin: 0 auto;
+    padding-left: 240px;
+    padding-top: 10px;
+}
+#add-more-icon
+{
+    font-size: 13px;
+}
+
+
+
+
