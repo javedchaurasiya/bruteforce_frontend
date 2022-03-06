@@ -19,3 +19,12 @@
 {
     color: black;
 }
+
+.main-social a:hover #child-icon-linkedin
+{
+    color: #0a66c2;
+}
+.main-social a:hover #child-icon-twitter
+{
+    color: #1d9bf0;
+}

@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap');
+
 body{
     background: #f7f8fa;
+    font-family: 'Roboto Mono',Arial, Helvetica, sans-serif;
 }
 .user_container
 {
