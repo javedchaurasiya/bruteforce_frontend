@@ -1,0 +1,10 @@
+.main-submission {
+  border-top: 1px solid rgb(179, 175, 175);
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 17px;
+  font-size: 14px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+}

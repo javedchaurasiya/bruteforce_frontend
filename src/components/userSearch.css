@@ -1,0 +1,37 @@
+.search-item
+{
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1) , 0px 4px 6px -2px rgba(0,0,0,0.05) ;
+    padding: 15px;
+    border-radius: 15px;
+    transition: all .2s ease-in-out;
+    /* border:1px solid red; */
+}
+.avatar-container
+{
+    margin-top: 8px;
+}
+.details-container
+{
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.name-field
+{
+    font-size: larger;
+    font-weight: 500;
+}
+.solved
+{
+    font-size: smaller;
+    font-weight: 350;
+}
+.search-item:hover
+{
+    transform: scale(1.1); 
+}

@@ -1,0 +1,19 @@
+.main-avatar
+{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    width: 100%;
+
+}
+.left-container-avatar
+{
+    width: auto;
+    margin-left: 16px;
+}
+.right-container-avatar
+{
+    margin-left: 17px;
+    overflow: hidden;
+
+}

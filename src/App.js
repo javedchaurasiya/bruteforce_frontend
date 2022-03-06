@@ -13,6 +13,7 @@ import SignUp from "./pages/SignUp";
 import { useState, useEffect } from "react";
 import LoadingPage from "./pages/LoadingPage";
 import CodeEditor from "./pages/CodeEditor";
+import Profile from "./pages/Profile";
 import axios from "axios";
 
 const serverUrl = "http://localhost:2000/";
@@ -63,6 +64,7 @@ function App() {
           <Route path="/code-editor" exact element={<CodeEditor />} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/signup" exact element={<SignUp />} />
+          <Route path="/profile" exact element={<Profile />} />
           <Route path="/" exact element={<HomePage />} />
         </Routes>
       </div>

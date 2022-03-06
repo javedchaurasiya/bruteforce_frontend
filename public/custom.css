@@ -1,3 +1,6 @@
+body{
+    background: #f7f8fa;
+}
 .user_container
 {
     display: flex;

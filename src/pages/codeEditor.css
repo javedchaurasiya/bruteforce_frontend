@@ -38,3 +38,21 @@
     margin-left: 30px;
     width: 100px;
 }
+.input-container
+{
+    margin-top: 25px;
+    width: 700px;
+}
+.output-container
+{
+    margin-top: 40px;
+    width: 700px;
+    margin-bottom: 25px;
+}
+.btn-container
+{
+    display: flex;
+    justify-content: flex-end;
+    width: 700px;
+    margin-top: 20px;
+}
