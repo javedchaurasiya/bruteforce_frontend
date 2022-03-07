@@ -4,7 +4,7 @@ import "./mainAvatar.css";
 
 function MainAvatar(props) {
   const { userDetails } = props;
-  console.log(userDetails);
+  // console.log(userDetails);
   return (
     <div className="main-avatar">
       <div className="left-container-avatar">

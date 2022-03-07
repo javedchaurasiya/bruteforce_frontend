@@ -1,0 +1,34 @@
+.main-post-skeleton
+{
+    width: 98%;
+    margin: 0 auto;
+    background: #f7f7f8;
+    /* background: grey; */
+    padding: 10px;
+    padding-left: 15px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.post-skeleton-heading-container
+{
+    text-overflow:ellipsis;
+    overflow: hidden;
+    width: 350px;
+    white-space: nowrap;
+}
+.post-details-container
+{
+    display: flex;
+    flex-direction: row;
+}
+.post-stats-container
+{
+    display: flex;
+    flex-direction: row;
+    margin-left: 25px;
+}
+/* .post-stats-container > div{
+    border: 1px solid red;
+} */
