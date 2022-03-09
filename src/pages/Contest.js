@@ -2,7 +2,7 @@ import React from 'react'
 
 function Contest() {
   return (
-    <div>Contest</div>
+    <div style={{marginTop:'57px'}}>Contest</div>
   )
 }
 

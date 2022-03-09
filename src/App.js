@@ -3,7 +3,7 @@ import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, login } from "./features/userSlice";
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, withRouter } from "react-router-dom";
 import Contest from "./pages/Contest";
 import ProblemSet from "./pages/ProblemSet";
 import SearchUser from "./pages/SearchUser";
@@ -25,11 +25,11 @@ function App() {
 
   useEffect(() => {
     const timeoutID = setTimeout(() => {
-      console.log("checking token");
+      // console.log("checking token");
       const fetchData = async () => {
         try {
           const token = localStorage.getItem("Token");
-          console.log(token);
+          // console.log(token);
           const response = await axios.post(serverUrl + "verifyToken", {
             token,
           });
@@ -38,6 +38,7 @@ function App() {
             login({
               user_name: response.data.user_name,
               general_name: response.data.general_name,
+              imageURL:response.data.imageURL,
             })
           );
           setCheckToken(false);
@@ -58,14 +59,14 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path="/problemset" exact element={<ProblemSet />} />
-          <Route path="/contest" exact element={<Contest />} />
-          <Route path="/searchuser" exact element={<SearchUser />} />
-          <Route path="/code-editor" exact element={<CodeEditor />} />
-          <Route path="/login" exact element={<Login />} />
-          <Route path="/signup" exact element={<SignUp />} />
-          <Route path="/profile" exact element={<Profile />} />
-          <Route path="/" exact element={<HomePage />} />
+          <Route exact path="/problemset"  element={<ProblemSet />} />
+          <Route exact path="/contest"  element={<Contest />} />
+          <Route exact path="/searchuser"  element={<SearchUser />} />
+          <Route exact path="/code-editor"  element={<CodeEditor />} />
+          <Route exact path="/login"  element={<Login />} />
+          <Route exact path="/signup"  element={<SignUp />} />
+          <Route exact path="/"  element={<HomePage />} />
+          <Route  path="/:id" element={<Profile />} />
         </Routes>
       </div>
     </Router>

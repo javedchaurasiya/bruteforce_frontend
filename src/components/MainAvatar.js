@@ -13,6 +13,7 @@ function MainAvatar(props) {
           src={userDetails.imageURL}
           sx={{ width: 56, height: 56 }}
           variant="square"
+          style={{borderRadius:'10px'}}
         />
       </div>
       <div className="right-container-avatar">

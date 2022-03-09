@@ -113,6 +113,7 @@ export default function SignUp() {
         login({
           user_name: response.data.user_name,
           general_name: response.data.general_name,
+          imageURL: response.data.imageURL,
         })
       );
     } catch (error) {

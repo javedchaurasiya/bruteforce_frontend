@@ -37,7 +37,7 @@ function CircularProgressWithLabel(props) {
         <Typography
           variant="caption"
           component="div"
-          sx={{ fontSize: 10, color: "#ac8a8e" }}
+          sx={{ fontSize: 10, color: "#9e9e9e" }}
         >
           {`Solved`}
         </Typography>

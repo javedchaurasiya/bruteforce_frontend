@@ -1,5 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
@@ -23,35 +27,127 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import SubmissionPageComponent from "../components/SubmissionPageComponent";
 import PostPageComponent from "../components/PostPageComponent";
 import EditProfilePopup from "../components/EditProfilePopup";
+import LoadingProfile from "../components/LoadingProfile";
+import NotFound from "../components/NotFound";
 import "./profile.css";
 
 function Profile() {
-  const [userDetails, setUserDetails] = useState({
-    name: "Ritu Raj Shandilya",
-    userName: "rituraj",
-    school: "IIITG",
-    location: "Bihar, India",
-    socials: {
-      linkedin: "xyz",
-      twitter: "xyz",
-      github: "xyz",
-    },
-  });
+  const user = useSelector(selectUser);
 
-  const update = () => {
-    setUserDetails({...userDetails})
+  const params = useParams();
+  // console.log(params.id+" hello");
+
+  // const [currentUser, setCurrentUser] = useState(params.id)
+  // setCurrentUser(params.id)
+
+  const serverUrl = "http://localhost:2000/";
+
+  const [searchingUser, setSearchingUser] = useState(true);
+  const [userParam, setuserParam] = useState(params.id);
+  const [displayPopUp, setDisplayPopUp] = useState(false);
+  // const [userDetails, setUserDetails] = useState({
+  //   name: "Ritu Raj Shandilya",
+  //   userName: "rituraj",
+  //   imageURL:
+  //     "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png ",
+  //   school: "Indian Institute of Information Technology Guwahati",
+  //   location: "Bihar, India",
+  //   linkedin: "riturajshandilya",
+  //   twitter: "anonymouslaunda",
+  //   github: "javedchaurasiya",
+  // });
+  const [userDetails, setUserDetails] = useState(null);
+  const [otherData, setOtherData] = useState(null);
+  const [editUser, setEditUser] = useState(null);
+
+  const handleClose = () => {
+    setDisplayPopUp(!displayPopUp);
   };
 
-  const imageURL =
-    "https://media-exp1.licdn.com/dms/image/C5603AQG1B8pmz0jpvg/profile-displayphoto-shrink_800_800/0/1637489130518?e=1651708800&v=beta&t=EQsnNYTlxO0xPxkzHEBcLc63eYizo95UR6qb1lUoILA";
+  const update = () => {
+    setUserDetails({ ...editUser });
+    getProfileDetails();
+  };
+  const updateCopy = () => {
+    setEditUser({ ...editUser });
+  };
+
+  const editFunction = () => {
+    setEditUser({ ...userDetails });
+    handleClose();
+  };
+
   const [tabIndex, setTabIndex] = useState("1");
 
   const handleChange = (event, newValue) => {
     setTabIndex(newValue);
   };
-  return (
+
+  const getProfileDetails = async () => {
+    try {
+      const response = await axios.post(serverUrl + "profile", {
+        userName: params.id,
+      });
+      // console.log(response);
+      if (!response.data.profileData) {
+        // alert("UserNotFound");
+        setSearchingUser(false);
+        return;
+      }
+      const profileData = response.data.profileData;
+      setUserDetails({
+        name: profileData.general_name,
+        userName: profileData.user_name,
+        imageURL: profileData.imageURL,
+        school: profileData.school,
+        location: profileData.location,
+        linkedin: profileData.socials.linkedin,
+        github: profileData.socials.github,
+        twitter: profileData.socials.twitter,
+      });
+
+      // const otherData = response.data.otherData;
+      setOtherData(response.data.otherData)
+      console.log(otherData);
+      setSearchingUser(false);
+    } catch (error) {
+      console.log(error);
+      // alert("UserNotFound");
+      setSearchingUser(false);
+    }
+  };
+
+  const [PrevUser, setPrevUser] = useState("");
+
+  useEffect(() => {
+    // console.log('Entered Effect');
+    getProfileDetails();
+    setPrevUser(params.id);
+  }, []);
+
+  if (PrevUser !== params.id) {
+    setSearchingUser(true);
+    setUserDetails(null);
+    getProfileDetails();
+    setPrevUser(params.id);
+  }
+
+  // console.log('other data');
+  // getProfileDetails()
+  return searchingUser ? (
+    <LoadingProfile />
+  ) : !userDetails ? (
+    <NotFound />
+  ) : (
     <>
-      <EditProfilePopup />
+      {displayPopUp && (
+        <EditProfilePopup
+          userDetail={editUser}
+          update={update}
+          updateCopy={updateCopy}
+          handleClose={handleClose}
+        />
+      )}
       <div className="main-profile">
         <Container fixed sx={{ minWidth: "1250px" }}>
           <div className="profile-container">
@@ -59,21 +155,24 @@ function Profile() {
               <div className="avatar-container">
                 <MainAvatar
                   userDetails={{
-                    imageURL,
+                    imageURL: userDetails.imageURL,
                     name: userDetails.name,
                     userName: userDetails.userName,
                   }}
                 />
               </div>
-              <div className="edit-container">
-                <Button
-                  variant="outlined"
-                  sx={{ px: "52px", fontSize: 12 }}
-                  endIcon={<EditIcon />}
-                >
-                  Edit Profile
-                </Button>
-              </div>
+              {user && user.user_name === userDetails.userName && (
+                <div className="edit-container">
+                  <Button
+                    variant="outlined"
+                    sx={{ px: "52px", fontSize: 12 }}
+                    endIcon={<EditIcon />}
+                    onClick={editFunction}
+                  >
+                    Edit Profile
+                  </Button>
+                </div>
+              )}
               <div className="school-container">
                 <div
                   style={{
@@ -82,9 +181,9 @@ function Profile() {
                     marginRight: "7px",
                   }}
                 >
-                  <SchoolIcon sx={{ fontSize: 17, color: grey[500] }} />
+                  <SchoolIcon sx={{ fontSize: 17, color: "#9e9e9e" }} />
                 </div>
-                <span style={{ fontSize: "13px", color: "grey" }}>
+                <span style={{ fontSize: "13px", color: "#9e9e9e" }}>
                   {userDetails.school}
                 </span>
               </div>
@@ -96,20 +195,21 @@ function Profile() {
                     marginRight: "7px",
                   }}
                 >
-                  <LocationOnIcon sx={{ fontSize: 17, color: grey[500] }} />
+                  <LocationOnIcon sx={{ fontSize: 17, color: "#9e9e9e" }} />
                 </div>
-                <span style={{ fontSize: "13px", color: "grey" }}>
+                <span style={{ fontSize: "13px", color: "#9e9e9e" }}>
                   {userDetails.location}
                 </span>
               </div>
-              <Socials socialDetails={userDetails.socials} />
-              <Submission
-                submissionDetails={{
-                  total: "1000",
-                  cpp: "700",
-                  java: "100",
-                  python: "200",
+              <Socials
+                socialDetails={{
+                  linkedin: userDetails.linkedin,
+                  github: userDetails.github,
+                  twitter: userDetails.twitter,
                 }}
+              />
+              <Submission
+                submissionDetails={otherData.submissionStats}
               />
             </div>
             <div className="right-container-profile">
@@ -119,32 +219,32 @@ function Profile() {
                     style={{
                       fontSize: "10px",
                       marginLeft: "7px",
-                      color: "#ac8a8e",
+                      color: "#9e9e9e",
                     }}
                   >
                     Solved Problems
                   </span>
                   <div className="solved-sec-container">
                     <div className="progress-container">
-                      <CircularProgressWithLabel value={69} />
+                      <CircularProgressWithLabel value={otherData.solvedProblems.solvedPercent} />
                     </div>
                     <div className="linear-progress-container">
                       <LinearProgress
                         id="easy-progress"
                         variant="determinate"
-                        value={20}
+                        value={otherData.solvedProblems.easy}
                         sx={{ borderRadius: "5px" }}
                       />
                       <LinearProgress
                         id="medium-progress"
                         variant="determinate"
-                        value={20}
+                        value={otherData.solvedProblems.medium}
                         sx={{ borderRadius: "5px" }}
                       />
                       <LinearProgress
                         id="hard-progress"
                         variant="determinate"
-                        value={15}
+                        value={otherData.solvedProblems.hard}
                         sx={{ borderRadius: "5px" }}
                       />
                     </div>
@@ -155,10 +255,10 @@ function Profile() {
                     style={{
                       fontSize: "10px",
                       marginLeft: "7px",
-                      color: "#ac8a8e",
+                      color: "#9e9e9e",
                     }}
                   >
-                    Community Status
+                    Community Stats
                   </span>
                   <div className="community-container">
                     <div className="community-sub-container">
@@ -285,7 +385,7 @@ function Profile() {
                     </TabList>
                   </Box>
                   <TabPanel value="1" sx={{ padding: 0 }}>
-                    <SubmissionPageComponent />
+                    <SubmissionPageComponent submissionArray={otherData.recentAC} />
                   </TabPanel>
                   <TabPanel value="2" sx={{ padding: 0 }}>
                     <PostPageComponent />

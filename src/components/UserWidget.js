@@ -16,8 +16,8 @@ function UserWidget() {
     dispatch(logout());
     console.log(user);
   };
-  const defAvatarImage =
-    "https://media-exp1.licdn.com/dms/image/C5603AQG1B8pmz0jpvg/profile-displayphoto-shrink_400_400/0/1637489130518?e=1650499200&v=beta&t=ZIbuzQ7DX7cqJ8cXs8OzTm1NGKLpL6qinBtZiiZk9SM";
+  // const defAvatarImage =
+    // "https://media-exp1.licdn.com/dms/image/C5603AQG1B8pmz0jpvg/profile-displayphoto-shrink_400_400/0/1637489130518?e=1650499200&v=beta&t=ZIbuzQ7DX7cqJ8cXs8OzTm1NGKLpL6qinBtZiiZk9SM";
 
   return (
     <>
@@ -34,7 +34,7 @@ function UserWidget() {
         </button> */}
           <img
             className="rounded-circle"
-            src={defAvatarImage}
+            src={user.imageURL}
             alt="me"
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
@@ -46,12 +46,12 @@ function UserWidget() {
             aria-labelledby="dropdownMenuButton1"
           >
             <li>
-              <Link className="dropdown-item" to="/">
+              <Link className="dropdown-item" to={`/${user.user_name}`}>
                 {user.general_name}
               </Link>
             </li>
             <li>
-              <Link className="dropdown-item" to="/">
+              <Link className="dropdown-item" to="/mySubmissions">
                 Submissions
               </Link>
             </li>

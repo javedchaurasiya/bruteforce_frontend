@@ -97,6 +97,7 @@ export default function Login() {
         login({
           user_name: result.user_name,
           general_name: result.general_name,
+          imageURL: result.imageURL,
         })
       );
 

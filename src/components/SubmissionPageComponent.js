@@ -3,10 +3,13 @@ import SubmissionSkeleton from "./SubmissionSkeleton";
 import ViewMoreComponent from "./ViewMoreComponent";
 import "./submissionPage.css";
 
-function SubmissionPageComponent() {
+function SubmissionPageComponent(props) {
+  const {submissionArray}=props
+  // console.log(submissionArray);
   return (
     <div className="main-submission-page">
-      <SubmissionSkeleton
+      {submissionArray.map(sub=>(<SubmissionSkeleton key={sub.id} submissionDetails={sub}/>))}
+      {/* <SubmissionSkeleton
         submissionDetails={{
           id: "123456",
           problemName: "Two Sum",
@@ -54,7 +57,7 @@ function SubmissionPageComponent() {
           problemName: "Majority Element",
           timeline: "1 week ago",
         }}
-      />
+      /> */}
       <div className="view-more-submissions-btn">
         <ViewMoreComponent link={"mySubmissions"} />
       </div>

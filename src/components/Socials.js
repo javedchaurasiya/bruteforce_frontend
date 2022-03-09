@@ -10,7 +10,7 @@ function Socials(props) {
   return (
     <div className="main-social">
       <span style={{ fontWeight: 600, letterSpacing: 0.5 }}>Socials</span>
-      <a style={{marginTop:10}} href={"http://linkedin.com/" + socialDetails.linkedin}>
+      <a style={{marginTop:10}} href={"http://linkedin.com/in/" + socialDetails.linkedin}>
         <LinkedInIcon id="child-icon-linkedin" sx={{ fontSize: 17 }} />
         <span style={{ marginLeft: 5, fontSize:'13px' }}>{socialDetails.linkedin}</span>
       </a>
