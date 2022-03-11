@@ -1,0 +1,27 @@
+.show-problem
+{
+    /* overflow: hidden; */
+    margin-top: 25px;
+    overflow-wrap: break-word;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+
+}
+.diff-tag-container
+{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.main-addProblem > div
+{
+    margin-top: 15px;
+}
+
+
+.add-prob-btn > button
+{
+    width: 100%;
+    /* margin-left: 30px; */
+}

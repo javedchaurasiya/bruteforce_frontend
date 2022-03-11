@@ -1,0 +1,40 @@
+.main-ide-component
+{
+    width: 50%;
+    /* border: 1px solid blue; */
+    background: #fafafa;
+    height: 640px;
+}
+#UNIQUE_ID_OF_DIV_1
+{
+    margin-top: 0;
+}
+#demo-simple-select
+{
+    /* display: none; */
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.items-ide
+{
+    /* display: none; */
+    /* height: 40px; */
+    background: #fafafa;
+    /* background: black; */
+}
+.dropdown-items
+{
+    /* padding: 30px; */
+    width: 100%;
+    background: #fafafa;
+    margin-bottom: 10px;
+}
+.submit-btn-container
+{
+    width: 100%;
+}
+.submit-btn-container > button
+{
+    float: right;
+    margin-top: 10px;
+}

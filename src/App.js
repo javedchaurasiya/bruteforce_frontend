@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route, withRouter } from "react-router-dom";
 import Contest from "./pages/Contest";
 import ProblemSet from "./pages/ProblemSet";
+import Problem from "./pages/Problem";
+import AddProblem from "./pages/AddProblem";
 import SearchUser from "./pages/SearchUser";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
@@ -59,6 +61,8 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
+          <Route exact path="/addProblem"  element={<AddProblem />} />
+          <Route exact path="/problem"  element={<Problem />} />
           <Route exact path="/problemset"  element={<ProblemSet />} />
           <Route exact path="/contest"  element={<Contest />} />
           <Route exact path="/searchuser"  element={<SearchUser />} />

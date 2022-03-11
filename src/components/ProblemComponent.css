@@ -1,0 +1,7 @@
+.main-problem-component
+{
+    width: 49%;
+    /* border: 1px solid blue; */
+    height: 640px;
+    overflow: auto;
+}

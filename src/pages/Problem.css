@@ -1,0 +1,10 @@
+.main-problem
+{
+    margin-top: 57px;
+    width: 1535px;
+    overflow: auto;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
