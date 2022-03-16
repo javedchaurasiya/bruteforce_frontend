@@ -1,23 +1,28 @@
-import { React, useState } from "react";
+import { React, useState,useEffect } from "react";
+import axios from "axios";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import DescriptionIcon from '@mui/icons-material/Description';
-import InventoryIcon from '@mui/icons-material/Inventory';
+import DescriptionIcon from "@mui/icons-material/Description";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import ProblemDescription from "./ProblemDescription";
+import SubmissionSummary from "./SubmissionSummary";
 import "./ProblemComponent.css";
 
-function ProblemComponent() {
-  const [tabIndex, setTabIndex] = useState("1");
-
+function ProblemComponent(props) {
+  const {data,update}=props
+ 
   const handleChange = (event, newValue) => {
-    setTabIndex(newValue);
+    // setTabIndex(newValue);
+    data.tabIndex=newValue
+    update()
   };
 
   return (
     <div className="main-problem-component">
-      <TabContext value={tabIndex}>
+      <TabContext value={data.tabIndex}>
         <Box sx={{ borderBottom: 1, borderColor: "divider", padding: 0 }}>
           <TabList
             onChange={handleChange}
@@ -30,7 +35,7 @@ function ProblemComponent() {
               label={
                 <span
                   style={{
-                    color: tabIndex === "1" ? "#fe5f75" : "",
+                    color: data.tabIndex === "1" ? "#fe5f75" : "",
                     fontSize: "12px",
                   }}
                 >
@@ -46,7 +51,7 @@ function ProblemComponent() {
               label={
                 <span
                   style={{
-                    color: tabIndex === "2" ? "green" : "",
+                    color: data.tabIndex === "2" ? "green" : "",
                     fontSize: "12px",
                   }}
                 >
@@ -58,14 +63,13 @@ function ProblemComponent() {
               }
               value="2"
             />
-            
           </TabList>
         </Box>
-        <TabPanel value="1" sx={{ padding: 0 }}>
-          abc
+        <TabPanel value="1" sx={{ padding: "5px" }}>
+          <ProblemDescription problem={data.problem} />
         </TabPanel>
         <TabPanel value="2" sx={{ padding: 0 }}>
-          mno
+          <SubmissionSummary submissions={data.submissions}/>
         </TabPanel>
         {/* <TabPanel value="3" sx={{ padding: 0 }}>
           pqr

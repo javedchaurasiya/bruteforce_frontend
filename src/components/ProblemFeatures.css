@@ -1,0 +1,10 @@
+.problem-features
+{
+    border-bottom: 1px solid #dddfe2;
+    padding-left: 5px;
+    padding-bottom: 6px;
+}
+.prob-icons:hover
+{
+    cursor: pointer;
+}

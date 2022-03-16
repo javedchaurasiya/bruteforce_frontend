@@ -32,29 +32,8 @@ languages.forEach((lang) => {
 });
 
 themes.forEach((theme) => require(`ace-builds/src-noconflict/theme-${theme}`));
-function IDEComponent() {
-  const [values, setValues] = useState({
-    language: localStorage.getItem("language"),
-    theme: localStorage.getItem("theme"),
-    fontSize: localStorage.getItem("fontSize"),
-    src_code: localStorage.getItem("src_code"),
-    input: localStorage.getItem("input"),
-    running: false,
-  });
-
-  const handleChange = (prop) => (event) => {
-    console.log(event);
-    setValues({ ...values, [prop]: event.target.value });
-    localStorage.setItem(prop, event.target.value);
-    console.log(localStorage.getItem(prop));
-  };
-  const onChange = (newValue) => {
-    console.log(newValue);
-    setValues({ ...values, src_code: newValue });
-    localStorage.setItem("src_code", newValue);
-    console.log(localStorage.getItem("src_code"));
-  };
-
+function IDEComponent(props) {
+  const { values, update,submitCode } = props;
   return (
     <div className="main-ide-component">
       <div className="items-ide">
@@ -67,7 +46,10 @@ function IDEComponent() {
                 id="demo-simple-select"
                 value={values.language}
                 label="Language"
-                onChange={handleChange("language")}
+                onChange={(e)=>{
+                  values.language=e.target.value
+                  update()
+                }}
               >
                 {languages.map((language) => (
                   <MenuItem key={language} value={language}>
@@ -85,7 +67,10 @@ function IDEComponent() {
                 id="demo-simple-select"
                 value={values.theme}
                 label="Theme"
-                onChange={handleChange("theme")}
+                onChange={(e)=>{
+                  values.theme=e.target.value
+                  update()
+                }}
               >
                 {themes.map((theme) => (
                   <MenuItem key={theme} value={theme}>
@@ -103,7 +88,10 @@ function IDEComponent() {
                 id="demo-simple-select"
                 value={values.fontSize}
                 label="FontSize"
-                onChange={handleChange("fontSize")}
+                onChange={(e)=>{
+                  values.fontSize=e.target.value
+                  update()
+                }}
               >
                 {fonts.map((font) => (
                   <MenuItem key={font} value={font}>
@@ -122,7 +110,10 @@ function IDEComponent() {
         width="765px"
         mode={values.language}
         theme={values.theme}
-        onChange={onChange}
+        onChange={(newValue)=>{
+          values.src_code=newValue
+          update()
+        }}
         name="UNIQUE_ID_OF_DIV_1"
         editorProps={{ $blockScrolling: true }}
         fontSize={values.fontSize}
@@ -142,6 +133,7 @@ function IDEComponent() {
           disabled={values.running}
           variant="contained"
           color="success"
+          onClick={submitCode}
           endIcon={
             values.running ? (
               <CircularProgress color="inherit" size={25} />

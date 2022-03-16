@@ -4,6 +4,7 @@ import { selectUser } from "../features/userSlice";
 import { useSelector } from "react-redux";
 import { logout } from "../features/userSlice";
 import { useDispatch } from "react-redux";
+import './userContainer.css'
 
 function UserWidget() {
   const user = useSelector(selectUser);

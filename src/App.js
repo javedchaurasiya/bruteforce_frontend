@@ -35,7 +35,7 @@ function App() {
           const response = await axios.post(serverUrl + "verifyToken", {
             token,
           });
-          console.log(response);
+          // console.log(response);
           dispatch(
             login({
               user_name: response.data.user_name,
@@ -61,8 +61,8 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
+        <Route exact path="/problem/:id"  element={<Problem />} />
           <Route exact path="/addProblem"  element={<AddProblem />} />
-          <Route exact path="/problem"  element={<Problem />} />
           <Route exact path="/problemset"  element={<ProblemSet />} />
           <Route exact path="/contest"  element={<Contest />} />
           <Route exact path="/searchuser"  element={<SearchUser />} />

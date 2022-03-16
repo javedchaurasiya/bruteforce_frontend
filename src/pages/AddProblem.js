@@ -48,7 +48,11 @@ function AddProblem() {
 
   const valid = () => {
     if (ProblemDetails.title === "") return false;
-    if (ProblemDetails.description === ""||editorState.getCurrentContent().getPlainText()==='') return false;
+    if (
+      ProblemDetails.description === "" ||
+      editorState.getCurrentContent().getPlainText() === ""
+    )
+      return false;
     if (ProblemDetails.example_input === "") return false;
     if (ProblemDetails.example_output === "") return false;
     if (ProblemDetails.test_input === "") return false;
@@ -63,15 +67,14 @@ function AddProblem() {
         alert("All fields are required");
         return;
       }
-      const response = axios.post(serverURL + "addProblem", {
+      const response = await axios.post(serverURL + "addProblem", {
         ...ProblemDetails,
       });
       console.log(response.data);
-      if(!(response.data&&response.data.success))
-      {
+      if (!(response.data && response.data.success)) {
         alert("Something Went Wrong");
         return;
-      } 
+      }
       alert("Added Successfully");
     } catch (error) {
       console.log(error);

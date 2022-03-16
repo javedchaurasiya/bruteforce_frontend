@@ -1,0 +1,25 @@
+.main-submission-summary {
+  padding: 10px;
+  height: 580px;
+  overflow: auto;
+}
+.main-submission-summary > div:nth-child(even) {
+  background: rgb(248, 247, 247);
+}
+.sub-table-heading {
+  width: 99%;
+  display: flex;
+  flex-direction: row;
+  /* justify-content:space-between; */
+  border: 1px solid grey;
+}
+.sub-table-heading > div {
+  width: 33%;
+  border-left: 1px solid grey;
+  padding-left: 50px;
+  /* padding-right: 90px; */
+  font-weight: 550;
+  font-size: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

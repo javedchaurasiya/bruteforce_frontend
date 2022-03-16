@@ -1,0 +1,7 @@
+.user_container
+{
+    /* display: none; */
+    display: flex;
+    flex-direction: row;
+    margin-right: 40px;
+}

@@ -5,7 +5,7 @@ body::-webkit-scrollbar {
 }
 
 body {
-  background: #f7f8fa;
+  background: #fafafa;
   font-family: "Roboto Mono", Arial, Helvetica, sans-serif;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

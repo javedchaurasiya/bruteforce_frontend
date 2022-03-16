@@ -1,0 +1,9 @@
+.main-problem-description {
+  /* border: 1px solid blue; */
+  height: 580px;
+  overflow: auto;
+}
+
+.problem-description {
+    padding: 10px;
+}
