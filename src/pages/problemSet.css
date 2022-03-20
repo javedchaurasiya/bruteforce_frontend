@@ -1,0 +1,13 @@
+.main-problemSet-body
+{
+    margin-top: 85px;
+    /* background: #f5f5f5; */
+}
+
+.filter-container
+{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}

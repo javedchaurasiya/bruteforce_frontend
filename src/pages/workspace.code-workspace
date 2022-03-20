@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Learning React",
+			"path": "..\\..\\.."
+		}
+	],
+	"settings": {
+		"emmet.includeLanguages": {
+			"javascript": "javascriptreact"
+		}
+	}
+}
