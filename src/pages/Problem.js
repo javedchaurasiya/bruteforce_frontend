@@ -6,11 +6,17 @@ import { selectUser } from "../features/userSlice";
 import "./Problem.css";
 import ProblemComponent from "../components/ProblemComponent";
 import IDEComponent from "../components/IDEComponent";
+import LoadingProfile from "../components/LoadingProfile";
+import NotFound from "../components/NotFound";
 
 function Problem() {
   const serverURL = "http://localhost:2000/";
   const params = useParams();
   const user = useSelector(selectUser);
+  const [Status, setStatus] = useState({
+    loading: true,
+    found: false,
+  });
   const [data, setData] = useState({
     values: {
       language: localStorage.getItem("language"),
@@ -43,6 +49,7 @@ function Problem() {
       },
     ],
   });
+  const [liked, setLiked] = useState(false);
   const [data1, setData1] = useState({
     values: {
       language: localStorage.getItem("language"),
@@ -58,6 +65,31 @@ function Problem() {
     setData({ ...data });
     // console.log(data);
   };
+  const toogleLike = () => {
+    if (data.liked) data.problem.likes--;
+    else data.problem.likes++;
+    data.liked = !data.liked;
+    update();
+    setLiked(!liked);
+  };
+  useEffect(() => {
+    const like = setTimeout(async() => {
+      try {
+        const response = await axios.post(serverURL + "like", {
+          status: liked,
+          id: data.problem.problem_id,
+          user_name: user.user_name,
+        });
+        // console.log(response);
+        data.problem.likes = response.data.likes;
+      } catch (error) {
+        // console.log(error);
+        // alert("something went wrong");
+      }
+    }, 1500);
+
+    return () => clearTimeout(like);
+  }, [liked]);
 
   const submitCode = async () => {
     data.values.running = true;
@@ -83,7 +115,7 @@ function Problem() {
   };
 
   useEffect(() => {
-    console.log("abcd");
+    // console.log("abcd");
     const getProblem = async () => {
       try {
         const response = await axios.post(serverURL + "getProblem", {
@@ -91,18 +123,28 @@ function Problem() {
           user_name: user ? user.user_name : "",
         });
         setData({ ...data1, ...response.data });
+        setLiked(response.data.liked);
+        Status.found = true;
+        setStatus({ ...Status });
+        // console.log(response.data);
       } catch (error) {
         console.log(error);
       }
+      Status.loading = false;
+      setStatus({ ...Status });
     };
     getProblem();
   }, []);
 
   return !user ? (
     <Navigate to={"/login"} />
+  ) : Status.loading ? (
+    <LoadingProfile />
+  ) : !Status.found ? (
+    <NotFound />
   ) : (
     <div className="main-problem">
-      <ProblemComponent data={data} update={update} />
+      <ProblemComponent data={data} update={update} toogleLike={toogleLike} />
       <IDEComponent
         values={data.values}
         update={update}

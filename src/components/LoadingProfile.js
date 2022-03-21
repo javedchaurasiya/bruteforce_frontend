@@ -5,7 +5,7 @@ function LoadingProfile() {
   return (
     <div className="main-loadingProfile" style={{ marginTop: "60px" }}>
       <div className="spinner">
-        <span>Loading Profile...</span>
+        <span>Loading Page...</span>
         <div className="half-spinner"></div>
       </div>
     </div>

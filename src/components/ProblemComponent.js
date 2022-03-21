@@ -12,7 +12,7 @@ import SubmissionSummary from "./SubmissionSummary";
 import "./ProblemComponent.css";
 
 function ProblemComponent(props) {
-  const {data,update}=props
+  const {data,update,toogleLike}=props
  
   const handleChange = (event, newValue) => {
     // setTabIndex(newValue);
@@ -66,7 +66,7 @@ function ProblemComponent(props) {
           </TabList>
         </Box>
         <TabPanel value="1" sx={{ padding: "5px" }}>
-          <ProblemDescription problem={data.problem} />
+          <ProblemDescription problem={data.problem} update={update} liked={data.liked} toogleLike={toogleLike} />
         </TabPanel>
         <TabPanel value="2" sx={{ padding: 0 }}>
           <SubmissionSummary submissions={data.submissions}/>

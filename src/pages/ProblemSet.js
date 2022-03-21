@@ -18,12 +18,13 @@ import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import axios from "axios";
 import "./problemSet.css";
+import LoadingProfile from "../components/LoadingProfile";
 
-const getColor=(level)=>{
-  if (level == "easy")return "#4fcae8";
-  else if(level == "medium")return "#ffd252";
+const getColor = (level) => {
+  if (level == "easy") return "#4fcae8";
+  else if (level == "medium") return "#ffd252";
   else return "#ff2d55";
-}
+};
 
 const serverURL = "http://localhost:2000/";
 
@@ -59,12 +60,15 @@ const MenuProps = {
 };
 
 function ProblemSet() {
+  const [Status, setStatus] = useState({
+    loading: true,
+  });
   const tags = ["DP", "Array", "Maths", "Greedy"];
   const [filter, setFilter] = useState({
-    level: "easy",
+    level: "all",
     tags: [...tags],
   });
-  const [Problems, setProblems] = useState([])
+  const [Problems, setProblems] = useState([]);
 
   useEffect(() => {
     const getProblemSet = async () => {
@@ -73,16 +77,20 @@ function ProblemSet() {
           ...filter,
         });
         console.log(response);
-        setProblems(response.data.result)
+        setProblems(response.data.result);
       } catch (error) {
         console.log(error);
         alert("Something Went Wrong");
       }
+      Status.loading = false;
+      setStatus({ ...Status });
     };
     getProblemSet();
   }, [filter]);
 
-  return (
+  return Status.loading ? (
+    <LoadingProfile />
+  ) : (
     <div className="main-problemSet-body">
       <Container fixed sx={{ minWidth: "800px" }}>
         <div className="filter-container">
@@ -95,6 +103,7 @@ function ProblemSet() {
                 setFilter({ ...filter, level: e.target.value });
               }}
             >
+              <MenuItem value={"all"}>All</MenuItem>
               <MenuItem value={"easy"}>Easy</MenuItem>
               <MenuItem value={"medium"}>Medium</MenuItem>
               <MenuItem value={"hard"}>Hard</MenuItem>
@@ -138,14 +147,19 @@ function ProblemSet() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {Problems.map((prob)=>(
+              {Problems.map((prob) => (
                 <StyledTableRow key={prob.problem_id}>
-                <StyledTableCell component="th" scope="row">
-                  <Link to={"/problem/"+prob.problem_id}>{prob.title}</Link>
-                </StyledTableCell>
-                <StyledTableCell align="right" sx={{color:getColor(prob.level)}}>{prob.level}</StyledTableCell>
-                <StyledTableCell align="right">{prob.likes}</StyledTableCell>
-              </StyledTableRow>
+                  <StyledTableCell component="th" scope="row">
+                    <Link to={"/problem/" + prob.problem_id}>{prob.title}</Link>
+                  </StyledTableCell>
+                  <StyledTableCell
+                    align="right"
+                    sx={{ color: getColor(prob.level) }}
+                  >
+                    {prob.level}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">{prob.likes}</StyledTableCell>
+                </StyledTableRow>
               ))}
             </TableBody>
           </Table>

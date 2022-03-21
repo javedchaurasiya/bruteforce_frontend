@@ -14,7 +14,7 @@ function SubmissionSummary(props) {
       </div>
       {submissions.map((sub) => {
         //   console.log(sub);
-       return ( <SubSummaryL key={sub.id}  sub={sub} />);
+       return ( <SubSummaryL key={sub.submission_id}  sub={sub} />);
       })}
     </div>
   );

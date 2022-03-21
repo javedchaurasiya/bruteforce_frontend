@@ -3,7 +3,12 @@ import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, login } from "./features/userSlice";
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Routes, Route, withRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  withRouter,
+} from "react-router-dom";
 import Contest from "./pages/Contest";
 import ProblemSet from "./pages/ProblemSet";
 import Problem from "./pages/Problem";
@@ -16,6 +21,7 @@ import { useState, useEffect } from "react";
 import LoadingPage from "./pages/LoadingPage";
 import CodeEditor from "./pages/CodeEditor";
 import Profile from "./pages/Profile";
+import SubmissionDetails from "./pages/SubmissionDetails.js";
 import axios from "axios";
 
 const serverUrl = "http://localhost:2000/";
@@ -40,7 +46,7 @@ function App() {
             login({
               user_name: response.data.user_name,
               general_name: response.data.general_name,
-              imageURL:response.data.imageURL,
+              imageURL: response.data.imageURL,
             })
           );
           setCheckToken(false);
@@ -61,16 +67,17 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-        <Route exact path="/problem/:id"  element={<Problem />} />
-          <Route exact path="/addProblem"  element={<AddProblem />} />
-          <Route exact path="/problemset"  element={<ProblemSet />} />
-          <Route exact path="/contest"  element={<Contest />} />
-          <Route exact path="/searchuser"  element={<SearchUser />} />
-          <Route exact path="/code-editor"  element={<CodeEditor />} />
-          <Route exact path="/login"  element={<Login />} />
-          <Route exact path="/signup"  element={<SignUp />} />
-          <Route exact path="/"  element={<HomePage />} />
-          <Route  path="/:id" element={<Profile />} />
+          <Route exact path="/problem/:id" element={<Problem />} />
+          <Route exact path="/submissions/:id" element={<SubmissionDetails />} />
+          <Route exact path="/addProblem" element={<AddProblem />} />
+          <Route exact path="/problemset" element={<ProblemSet />} />
+          <Route exact path="/contest" element={<Contest />} />
+          <Route exact path="/searchuser" element={<SearchUser />} />
+          <Route exact path="/code-editor" element={<CodeEditor />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<SignUp />} />
+          <Route exact path="/" element={<HomePage />} />
+          <Route path="/:id" element={<Profile />} />
         </Routes>
       </div>
     </Router>

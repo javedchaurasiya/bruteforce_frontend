@@ -7,11 +7,11 @@ import "./ProblemDescription.css";
 
 function ProblemDescription(props) {
   
-    const {problem}=props
+    const {problem,update,liked,toogleLike}=props
 
   return (
     <div className="main-problem-description">
-      <ProblemFeatures problem={problem} />
+      <ProblemFeatures problem={problem} update={update} liked={liked} toogleLike={toogleLike} />
       <div className="problem-description">
         <Markup content={problem.description}/>
       </div>
