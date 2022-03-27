@@ -29,6 +29,7 @@ import PostPageComponent from "../components/PostPageComponent";
 import EditProfilePopup from "../components/EditProfilePopup";
 import LoadingProfile from "../components/LoadingProfile";
 import NotFound from "../components/NotFound";
+import HeatMap from "../components/HeatMap";
 import "./profile.css";
 
 function Profile() {
@@ -107,7 +108,7 @@ function Profile() {
       });
 
       // const otherData = response.data.otherData;
-      setOtherData(response.data.otherData)
+      setOtherData(response.data.otherData);
       console.log(otherData);
       setSearchingUser(false);
     } catch (error) {
@@ -208,9 +209,7 @@ function Profile() {
                   twitter: userDetails.twitter,
                 }}
               />
-              <Submission
-                submissionDetails={otherData.submissionStats}
-              />
+              <Submission submissionDetails={otherData.submissionStats} />
             </div>
             <div className="right-container-profile">
               <div className="right-section-1">
@@ -226,7 +225,9 @@ function Profile() {
                   </span>
                   <div className="solved-sec-container">
                     <div className="progress-container">
-                      <CircularProgressWithLabel value={otherData.solvedProblems.solvedPercent} />
+                      <CircularProgressWithLabel
+                        value={otherData.solvedProblems.solvedPercent}
+                      />
                     </div>
                     <div className="linear-progress-container">
                       <LinearProgress
@@ -315,7 +316,18 @@ function Profile() {
                   </div>
                 </div>
               </div>
-              <div className="cal-heatmap">Space for Calendar HeatMap</div>
+              <div className="cal-heatmap">
+                <span
+                  style={{
+                    fontSize: "10px",
+                    marginLeft: "7px",
+                    color: "#9e9e9e",
+                  }}
+                >
+                  Submission History
+                </span>
+                <HeatMap />
+              </div>
               <div className="solution-posts-container">
                 <TabContext value={tabIndex}>
                   <Box
@@ -385,7 +397,9 @@ function Profile() {
                     </TabList>
                   </Box>
                   <TabPanel value="1" sx={{ padding: 0 }}>
-                    <SubmissionPageComponent submissionArray={otherData.recentAC} />
+                    <SubmissionPageComponent
+                      submissionArray={otherData.recentAC}
+                    />
                   </TabPanel>
                   <TabPanel value="2" sx={{ padding: 0 }}>
                     <PostPageComponent />

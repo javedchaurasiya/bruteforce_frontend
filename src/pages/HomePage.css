@@ -1,0 +1,92 @@
+.homepage-container{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+}
+.left-container{
+    margin-top: 10px;
+    margin-left: auto;
+    /* margin-right: auto; */
+    width: 60%;
+    padding-left: 5px;
+    border-left: 1px solid ;
+}
+.right-container{
+    padding: 5px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.right-container >div{
+    padding: 5px;
+    width: 220px;
+    margin: 20px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+.qotd{
+    text-align: center;
+    height: 130px;
+}
+.most-submissions{
+    height: 310px;
+}
+.most-contributions{
+    height: 310px;
+}
+.admins{
+    height: 150px;
+}
+.head{
+    font-size: 18px;
+    border-bottom: 1px solid black;
+    color: rgb(226, 70, 31);
+}
+.question-name
+{
+    color: rgb(72, 183, 235);
+    margin-top: 10px;
+}
+#q{
+    color: blue;
+    text-decoration: underline;
+}
+.List-container{
+    max-height: inherit;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 25px;
+    padding: 3px;
+}
+
+.title
+{
+    margin: auto;
+    margin-left: 15px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 50px;
+    stroke-width: extra-large * 0.05;
+    font-weight: 800;
+    font-style: italic;
+
+
+}
+#brute{
+    background: -webkit-linear-gradient(rgb(245, 217, 217), rgb(214, 10, 10));
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#force{
+    background: -webkit-linear-gradient(rgb(159, 218, 241), blue);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.Tcontent{
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    width: 100%;
+    font-size: 20px;
+}
