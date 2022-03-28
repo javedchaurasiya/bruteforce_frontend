@@ -22,6 +22,7 @@ import LoadingPage from "./pages/LoadingPage";
 import CodeEditor from "./pages/CodeEditor";
 import Profile from "./pages/Profile";
 import SubmissionDetails from "./pages/SubmissionDetails.js";
+import MySubmissions from "./pages/MySubmissions.js";
 import axios from "axios";
 
 const serverUrl = "http://localhost:2000/";
@@ -70,6 +71,7 @@ function App() {
           <Route exact path="/problem/:id" element={<Problem />} />
           <Route exact path="/submissions/:id" element={<SubmissionDetails />} />
           <Route exact path="/addProblem" element={<AddProblem />} />
+          <Route exact path="/mySubmissions" element={<MySubmissions />} />
           <Route exact path="/problemset" element={<ProblemSet />} />
           <Route exact path="/contest" element={<Contest />} />
           <Route exact path="/searchuser" element={<SearchUser />} />

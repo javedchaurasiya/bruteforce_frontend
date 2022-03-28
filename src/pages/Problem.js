@@ -101,7 +101,7 @@ function Problem() {
         language: data.values.language,
         src_code: data.values.src_code,
       });
-      console.log(response.data);
+      // console.log(response.data);
       const result = response.data;
       data.submissions.push(result);
       update();

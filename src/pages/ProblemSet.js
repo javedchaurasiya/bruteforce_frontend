@@ -19,11 +19,12 @@ import Checkbox from "@mui/material/Checkbox";
 import axios from "axios";
 import "./problemSet.css";
 import LoadingProfile from "../components/LoadingProfile";
+import TablePagination from "@mui/material/TablePagination";
 
 const getColor = (level) => {
-  if (level == "easy") return "#4fcae8";
+  if (level == "easy") return "green";
   else if (level == "medium") return "#ffd252";
-  else return "#ff2d55";
+  else return "red";
 };
 
 const serverURL = "http://localhost:2000/";
@@ -60,6 +61,17 @@ const MenuProps = {
 };
 
 function ProblemSet() {
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
   const [Status, setStatus] = useState({
     loading: true,
   });
@@ -137,8 +149,12 @@ function ProblemSet() {
             </Select>
           </FormControl>
         </div>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <TableContainer className="problemSetTable" sx={{ maxHeight: 440 }} component={Paper}>
+          <Table
+            sx={{ minWidth: 700 }}
+            stickyHeader
+            aria-label="customized table"
+          >
             <TableHead>
               <TableRow>
                 <StyledTableCell>Title</StyledTableCell>
@@ -147,7 +163,7 @@ function ProblemSet() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {Problems.map((prob) => (
+              {/* {Problems.map((prob) => (
                 <StyledTableRow key={prob.problem_id}>
                   <StyledTableCell component="th" scope="row">
                     <Link to={"/problem/" + prob.problem_id}>{prob.title}</Link>
@@ -160,10 +176,57 @@ function ProblemSet() {
                   </StyledTableCell>
                   <StyledTableCell align="right">{prob.likes}</StyledTableCell>
                 </StyledTableRow>
-              ))}
+              ))} */}
+              {Problems.slice(
+                page * rowsPerPage,
+                page * rowsPerPage + rowsPerPage
+              ).map((prob) => {
+                return (
+                  <StyledTableRow
+                    hover
+                    role="checkbox"
+                    tabIndex={-1}
+                    key={prob.problem_id}
+                  >
+                    {/* {columns.map((column) => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell key={column.id} align={column.align}>
+                          {column.format && typeof value === 'number'
+                            ? column.format(value)
+                            : value}
+                        </TableCell>
+                      );
+                    })} */}
+                    <StyledTableCell component="th" scope="row">
+                      <Link to={"/problem/" + prob.problem_id}>
+                        {prob.title}
+                      </Link>
+                    </StyledTableCell>
+                    <StyledTableCell
+                      align="right"
+                      sx={{ color: getColor(prob.level) }}
+                    >
+                      {prob.level}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {prob.likes}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                );
+              })}
             </TableBody>
           </Table>
         </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25, 100]}
+          component="div"
+          count={Problems.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </Container>
     </div>
   );

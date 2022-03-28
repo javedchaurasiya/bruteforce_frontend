@@ -4,7 +4,8 @@ import { selectUser } from "../features/userSlice";
 import { useSelector } from "react-redux";
 import { logout } from "../features/userSlice";
 import { useDispatch } from "react-redux";
-import './userContainer.css'
+import Avatar from "@mui/material/Avatar";
+import "./userContainer.css";
 
 function UserWidget() {
   const user = useSelector(selectUser);
@@ -18,21 +19,13 @@ function UserWidget() {
     console.log(user);
   };
   // const defAvatarImage =
-    // "https://media-exp1.licdn.com/dms/image/C5603AQG1B8pmz0jpvg/profile-displayphoto-shrink_400_400/0/1637489130518?e=1650499200&v=beta&t=ZIbuzQ7DX7cqJ8cXs8OzTm1NGKLpL6qinBtZiiZk9SM";
+  // "https://media-exp1.licdn.com/dms/image/C5603AQG1B8pmz0jpvg/profile-displayphoto-shrink_400_400/0/1637489130518?e=1650499200&v=beta&t=ZIbuzQ7DX7cqJ8cXs8OzTm1NGKLpL6qinBtZiiZk9SM";
 
   return (
     <>
       <div className="user_container">
-        <div className="dropdown me-3" id="user-widget">
-          {/* <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton1"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          
-        </button> */}
+        {/* <div className="dropdown me-3" id="user-widget">
+         
           <img
             className="rounded-circle"
             src={user.imageURL}
@@ -72,7 +65,14 @@ function UserWidget() {
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
+        <Link to={`/${user.user_name}`}>
+          <Avatar
+            alt={user.user_name}
+            src={user.imageURL}
+            sx={{ width: 40, height: 40 }}
+          />
+        </Link>
         <button
           type="button"
           className="btn btn-outline-danger btn-sm mx-2"
