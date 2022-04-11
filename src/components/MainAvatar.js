@@ -1,6 +1,6 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
-import "./mainAvatar.css";
+import "./css/mainAvatar.css";
 
 function MainAvatar(props) {
   const { userDetails } = props;

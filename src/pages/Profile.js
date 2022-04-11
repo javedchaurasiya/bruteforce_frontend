@@ -30,7 +30,8 @@ import EditProfilePopup from "../components/EditProfilePopup";
 import LoadingProfile from "../components/LoadingProfile";
 import NotFound from "../components/NotFound";
 import HeatMap from "../components/HeatMap";
-import "./profile.css";
+import getServerURL from "../getServerURL";
+import "./css/profile.css";
 
 function Profile() {
   const user = useSelector(selectUser);
@@ -41,7 +42,7 @@ function Profile() {
   // const [currentUser, setCurrentUser] = useState(params.id)
   // setCurrentUser(params.id)
 
-  const serverUrl = "http://localhost:2000/";
+  const serverUrl = getServerURL();
 
   const [searchingUser, setSearchingUser] = useState(true);
   const [userParam, setuserParam] = useState(params.id);

@@ -9,7 +9,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import ProblemDescription from "./ProblemDescription";
 import SubmissionSummary from "./SubmissionSummary";
-import "./ProblemComponent.css";
+import "./css/ProblemComponent.css";
 
 function ProblemComponent(props) {
   const {data,update,toogleLike}=props

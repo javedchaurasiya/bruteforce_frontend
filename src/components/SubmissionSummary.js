@@ -1,6 +1,6 @@
 import React from "react";
 import SubSummaryL from "./SubSummaryL";
-import "./SubmissionSummary.css";
+import "./css/SubmissionSummary.css";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -62,7 +62,11 @@ function SubmissionSummary(props) {
        return ( <SubSummaryL key={sub.submission_id}  sub={sub} />);
       })} */}
       <TableContainer sx={{ maxHeight: 540 }} component={Paper}>
-        <Table stickyHeader  sx={{ minWidth: 700 }} aria-label="customized table">
+        <Table
+          stickyHeader
+          sx={{ minWidth: 700 }}
+          aria-label="customized table"
+        >
           <TableHead>
             <TableRow key={"table-header"}>
               <StyledTableCell>Time Submitted</StyledTableCell>
@@ -78,7 +82,7 @@ function SubmissionSummary(props) {
                 </StyledTableCell>
                 <StyledTableCell>
                   <Link
-                    style={{ color:getColor(sub.status) }}
+                    style={{ color: getColor(sub.status) }}
                     to={"/submissions/" + sub.submission_id}
                   >
                     {sub.status}

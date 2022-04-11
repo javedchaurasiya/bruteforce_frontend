@@ -1,5 +1,5 @@
 import React from "react";
-import "./loadingProfile.css";
+import "./css/loadingProfile.css";
 
 function LoadingProfile() {
   return (

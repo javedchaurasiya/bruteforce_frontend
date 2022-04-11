@@ -2,7 +2,7 @@ import React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import "./circularProgressLabel.css";
+import "./css/circularProgressLabel.css";
 
 function CircularProgressWithLabel(props) {
   return (

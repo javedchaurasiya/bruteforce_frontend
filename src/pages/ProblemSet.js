@@ -17,9 +17,10 @@ import Select from "@mui/material/Select";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import axios from "axios";
-import "./problemSet.css";
+import "./css/problemSet.css";
 import LoadingProfile from "../components/LoadingProfile";
 import TablePagination from "@mui/material/TablePagination";
+import getServerURL from "../getServerURL";
 
 const getColor = (level) => {
   if (level == "easy") return "green";
@@ -27,7 +28,7 @@ const getColor = (level) => {
   else return "red";
 };
 
-const serverURL = "http://localhost:2000/";
+const serverURL = getServerURL();
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {

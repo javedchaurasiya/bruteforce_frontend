@@ -1,14 +1,16 @@
 import React from "react";
 import SubmissionSkeleton from "./SubmissionSkeleton";
 import ViewMoreComponent from "./ViewMoreComponent";
-import "./submissionPage.css";
+import "./css/submissionPage.css";
 
 function SubmissionPageComponent(props) {
-  const {submissionArray}=props
+  const { submissionArray } = props;
   // console.log(submissionArray);
   return (
     <div className="main-submission-page">
-      {submissionArray.map(sub=>(<SubmissionSkeleton key={sub.id} submissionDetails={sub}/>))}
+      {submissionArray.map((sub) => (
+        <SubmissionSkeleton key={sub.id} submissionDetails={sub} />
+      ))}
       {/* <SubmissionSkeleton
         submissionDetails={{
           id: "123456",

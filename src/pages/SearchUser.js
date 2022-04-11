@@ -1,15 +1,16 @@
 import { React, useState, useEffect } from "react";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
-import "./searchUser.css";
+import "./css/searchUser.css";
 import UserSearch from "../components/UserSearch";
 import { InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
+import getServerURL from "../getServerURL";
 
 function SearchUser() {
-  const serverURL = "http://localhost:2000/";
+  const serverURL = getServerURL();
 
   const [query, setQuery] = useState("");
   const [result, setResult] = useState([]);

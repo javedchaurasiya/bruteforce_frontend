@@ -1,32 +1,4 @@
-// import React from "react";
-// import { useDispatch } from "react-redux";
-// import { login } from "./features/userSlice";
-// import { selectUser } from "./features/userSlice";
-// import { useSelector } from "react-redux";
 
-// // const user = useSelector(selectUser);
-//   // const dispatch = useDispatch();
-//   // const fun = () => {
-//   //   console.log("clicked");
-//   //   dispatch(
-//   //     login({
-//   //       name: "ritu raj",
-//   //       roll: "1901162",
-//   //     })
-//   //   );
-//   //   console.log(user.name+"  done");
-//   // };
-
-// function Login() {
-
-//   return (
-//     <div>
-//       Login Page
-//     </div>
-//   );
-// }
-
-// export default Login;
 
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
@@ -49,6 +21,7 @@ import { selectUser } from "../features/userSlice";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import getServerURL from "../getServerURL";
 
 function Copyright(props) {
   return (
@@ -65,7 +38,7 @@ function Copyright(props) {
   );
 }
 
-const serverUrl = "http://localhost:2000/";
+const serverUrl = getServerURL();
 
 const theme = createTheme();
 

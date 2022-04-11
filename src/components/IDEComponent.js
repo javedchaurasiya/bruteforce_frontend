@@ -9,7 +9,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import "ace-builds/src-noconflict/mode-jsx";
 import "ace-builds/src-noconflict/ext-language_tools";
-import "./IDEComponent.css";
+import "./css/IDEComponent.css";
 const languages = ["javascript", "java", "c_cpp", "python"];
 
 const themes = [

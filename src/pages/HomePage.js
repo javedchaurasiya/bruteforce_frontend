@@ -1,11 +1,12 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
-import "./HomePage.css";
+import "./css/HomePage.css";
 import LoadingProfile from "../components/LoadingProfile";
 import NotFound from "../components/NotFound";
 import { Link } from "react-router-dom";
+import getServerURL from "../getServerURL";
 
-const serverURL = "http://localhost:2000/";
+const serverURL = getServerURL();
 
 function HomePage() {
   const [Status, setStatus] = useState({

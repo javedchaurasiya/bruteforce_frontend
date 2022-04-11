@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { logout } from "../features/userSlice";
 import { useDispatch } from "react-redux";
 import Avatar from "@mui/material/Avatar";
-import "./userContainer.css";
+import "./css/userContainer.css";
 
 function UserWidget() {
   const user = useSelector(selectUser);

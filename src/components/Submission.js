@@ -1,6 +1,6 @@
 import React from "react";
 import SubButton from "./SubButton";
-import "./submission.css";
+import "./css/submission.css";
 
 function Submission(props) {
   const { submissionDetails } = props;

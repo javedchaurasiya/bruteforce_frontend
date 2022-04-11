@@ -3,14 +3,15 @@ import axios from "axios";
 import { useParams, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
-import "./Problem.css";
+import "./css/Problem.css";
 import ProblemComponent from "../components/ProblemComponent";
 import IDEComponent from "../components/IDEComponent";
 import LoadingProfile from "../components/LoadingProfile";
 import NotFound from "../components/NotFound";
+import getServerURL from "../getServerURL";
 
 function Problem() {
-  const serverURL = "http://localhost:2000/";
+  const serverURL = getServerURL();
   const params = useParams();
   const user = useSelector(selectUser);
   const [Status, setStatus] = useState({

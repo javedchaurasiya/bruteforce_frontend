@@ -7,11 +7,12 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import axios from "axios";
 import LoadingProfile from "../components/LoadingProfile";
 import NotFound from "../components/NotFound";
-import "./submissionsDetails.css";
+import "./css/submissionsDetails.css";
+import getServerURL from "../getServerURL";
 
 const languages = ["javascript", "java", "c_cpp", "python"];
 
-const serverURL = "http://localhost:2000/";
+const serverURL = getServerURL();
 
 const themes = [
   "monokai",

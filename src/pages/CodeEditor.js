@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./codeEditor.css";
+import "./css/codeEditor.css";
 import Container from "@mui/material/Container";
 // import Stack from "@mui/material/Stack";
 import InputLabel from "@mui/material/InputLabel";
@@ -15,6 +15,7 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import CodeRoundedIcon from "@mui/icons-material/CodeRounded";
+import getServerURL from "../getServerURL";
 
 const languages = ["javascript", "java", "c_cpp", "python"];
 
@@ -79,7 +80,7 @@ function CodeEditor() {
     return { lang: "nodejs", version: "4" };
   };
 
-  const serverUrl = "http://localhost:2000/";
+  const serverUrl = getServerURL();
 
   const runCode = async () => {
     setValues({ ...values, running: true });

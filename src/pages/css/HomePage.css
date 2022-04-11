@@ -2,6 +2,8 @@
     margin-top: 60px;
     display: flex;
     flex-direction: row;
+    /* margin-bottom: 30px; */
+    padding-bottom: 30px;
 }
 .left-container{
     margin-top: 10px;

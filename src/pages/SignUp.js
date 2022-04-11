@@ -25,9 +25,10 @@ import { login } from "../features/userSlice";
 import { selectUser } from "../features/userSlice";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import getServerURL from "../getServerURL";
 // import validator from 'validator';
 
-const serverUrl = "http://localhost:2000/";
+const serverUrl = getServerURL();
 
 function Copyright(props) {
   return (

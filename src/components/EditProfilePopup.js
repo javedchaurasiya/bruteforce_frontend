@@ -5,9 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../features/userSlice";
 import { checkboxClasses, TextField } from "@mui/material";
 import { Button } from "@mui/material";
-import "./editProfilePopup.css";
+import "./css/editProfilePopup.css";
+import getServerURL from "../getServerURL";
+
 function EditProfilePopup(props) {
-  const serverUrl = "http://localhost:2000/";
+  const serverUrl = getServerURL();
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 

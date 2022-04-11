@@ -24,8 +24,9 @@ import Profile from "./pages/Profile";
 import SubmissionDetails from "./pages/SubmissionDetails.js";
 import MySubmissions from "./pages/MySubmissions.js";
 import axios from "axios";
+import getServerURL from "./getServerURL";
 
-const serverUrl = "http://localhost:2000/";
+const serverUrl = getServerURL();
 
 function App() {
   const user = useSelector(selectUser);

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Avatar } from "@mui/material";
-import "./userSearch.css";
+import "./css/userSearch.css";
 
 // const stringToColor = (string) => {
 //   let hash = 0;
@@ -33,7 +33,7 @@ import "./userSearch.css";
 // };
 
 function UserSearch(props) {
-  const {user}=props
+  const { user } = props;
   // console.log(user);
   return (
     <Link to={"/" + user.user_name}>

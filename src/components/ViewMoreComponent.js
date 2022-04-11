@@ -6,7 +6,11 @@ import AddIcon from "@mui/icons-material/Add";
 function ViewMoreComponent(props) {
   return (
     <Link to={`/${props.link}`}>
-      <Button variant="contained" endIcon={<AddIcon id="add-more-icon" />} sx={{fontSize:'10px',borderRadius:'28px',py:'2px',pt:'4px'}}>
+      <Button
+        variant="contained"
+        endIcon={<AddIcon id="add-more-icon" />}
+        sx={{ fontSize: "10px", borderRadius: "28px", py: "2px", pt: "4px" }}
+      >
         View More
       </Button>
     </Link>

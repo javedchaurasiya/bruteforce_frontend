@@ -3,7 +3,7 @@ import ProblemFeatures from "./ProblemFeatures";
 // import axios from "axios";
 // import parse from "html-react-parser";
 import { Markup } from 'interweave';
-import "./ProblemDescription.css";
+import "./css/ProblemDescription.css";
 
 function ProblemDescription(props) {
   

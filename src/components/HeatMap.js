@@ -4,7 +4,7 @@ import "chartjs-adapter-date-fns";
 import { MatrixController, MatrixElement } from "chartjs-chart-matrix";
 
 import { getRelativePosition } from "chart.js/helpers";
-import "./Heatmap.css";
+import "./css/Heatmap.css";
 Chart.register(MatrixController, MatrixElement);
 
 function HeatMap() {

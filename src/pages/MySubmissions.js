@@ -15,6 +15,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import getServerURL from "../getServerURL";
 
 const getColor = (level) => {
   if (level == "accepted") return "green";
@@ -22,7 +23,7 @@ const getColor = (level) => {
   else return "red";
 };
 
-const serverURL = "http://localhost:2000/";
+const serverURL = getServerURL();
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {

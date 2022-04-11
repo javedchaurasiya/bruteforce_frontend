@@ -14,7 +14,8 @@ import { convertToRaw, EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import parse from "html-react-parser";
 import axios from "axios";
-import "./AddProblem.css";
+import "./css/AddProblem.css";
+import getServerURL from "../getServerURL";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -28,7 +29,7 @@ const MenuProps = {
 };
 
 function AddProblem() {
-  const serverURL = "http://localhost:2000/";
+  const serverURL = getServerURL();
 
   const [ProblemDetails, setProblemDetails] = useState({
     title: "",

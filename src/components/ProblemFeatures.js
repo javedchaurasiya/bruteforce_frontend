@@ -2,11 +2,11 @@ import { React, useState, useEffect } from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
+import getServerURL from "../getServerURL";
+import "./css/ProblemFeatures.css";
 
-import "./ProblemFeatures.css";
 
-
-const serverURL = "http://localhost:2000/";
+const serverURL = getServerURL();
 
 function ProblemFeatures(props) {
   var { problem, update, liked, toogleLike } = props;

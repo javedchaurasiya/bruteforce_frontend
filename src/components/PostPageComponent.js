@@ -1,7 +1,7 @@
 import React from "react";
 import PostSkeleton from "./PostSkeleton";
 import ViewMoreComponent from "./ViewMoreComponent";
-import "./postPage.css";
+import "./css/postPage.css";
 
 function PostPageComponent() {
   return (

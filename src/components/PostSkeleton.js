@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import "./postSkeleton.css";
+import "./css/postSkeleton.css";
 
 function PostSkeleton(props) {
   const { postDetails } = props;
